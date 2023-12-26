@@ -1,0 +1,20 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Форма по добавлению статьи{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1>Форма по добавлению статьи</h1>
+        <form method="post">
+            <!--Подключаю CSRF-токен для обеспечения безопасной передачи данных из формы-->
+            {% csrf_token %}
+            {{ form.title }}<br>
+            {{ form.anons }}<br>
+            {{ form.full_text }}<br>
+            {{ form.date }}<br>
+            <span>{{ error }}</span>
+            <!--При нажатии на кнопку пользователь будет переадресовывать все данные на сервер.-->
+            <button class="btn btn-outline-dark" type="submit">Добавить статью</button>
+        </form>
+    </div>
+{% endblock %}
